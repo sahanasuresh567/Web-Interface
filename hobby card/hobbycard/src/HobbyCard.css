@@ -1,0 +1,24 @@
+.hobby-card {
+  width: 220px;
+  padding: 15px;
+  margin: 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px gray;
+}
+
+.hobby-card img {
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.hobby-card h2 {
+  margin: 10px 0;
+}
+
+.hobby-card p {
+  font-size: 14px;
+}

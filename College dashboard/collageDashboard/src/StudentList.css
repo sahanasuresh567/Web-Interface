@@ -1,0 +1,25 @@
+.subjects {
+    width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: black;
+    font-weight: bold;
+}
+
+.subjects ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.subjects li {
+    padding: 10px;
+    margin: 8px 0;
+    background: #f4f4f4;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 17px;
+}

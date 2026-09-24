@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #count {
+            font-size: 50px;
+            margin: 20px;
+            color: blue;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Counter App</h1>
+
+    <h2 id="count">0</h2>
+
+    <button id="increase">+1</button>
+    <button id="decrease">-1</button>
+    <button id="reset">Reset</button>
+
+    <script>
+        let counter = 0;
+
+        let count = document.getElementById("count");
+
+        document.getElementById("increase").addEventListener("click", function () {
+            counter++;
+            count.textContent = counter;
+        });
+
+        document.getElementById("decrease").addEventListener("click", function () {
+            if (counter > 0) {
+                counter--;
+                count.textContent = counter;
+            }
+        });
+
+        document.getElementById("reset").addEventListener("click", function () {
+            counter = 0;
+            count.textContent = counter;
+        });
+    </script>
+
+</body>
+</html>
