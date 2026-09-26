@@ -1,9 +1,9 @@
 import react, { reactCompilerPreset } from '@vitejs/plugin-react'
-import babel from '@rolldown/plugin-babel'
+import babel from '@rollup/plugin-babel'
 import { defineConfig } from 'vite'
 
-// https://vite.dev/config/
 export default defineConfig({
+  base: '/Web-Interface/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
