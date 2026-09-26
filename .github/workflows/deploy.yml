@@ -1,5 +1,5 @@
 
-name: Deploy GitHub Pages
+name: Deploy Attendance Tracker
 
 on:
   push:
@@ -34,9 +34,11 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
+        working-directory: "./Attendance Tracker/attend"
         run: npm install
 
       - name: Build React application
+        working-directory: "./Attendance Tracker/attend"
         run: npm run build
 
       - name: Configure GitHub Pages
@@ -45,7 +47,7 @@ jobs:
       - name: Upload production build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: "./Attendance Tracker/attend/dist"
 
       - name: Deploy website
         id: deployment
