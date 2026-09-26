@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore Sahana S's collection of 10 web interface projects.">
   <title>Web Interface Projects | Sahana S</title>
+
   <style>
     :root {
       --bg: #0b1120;
@@ -16,8 +18,15 @@
       --accent2: #58dfc1;
       --border: rgba(180, 200, 235, .16);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Inter, "Segoe UI", Arial, sans-serif;
@@ -25,115 +34,323 @@
       color: var(--text);
       min-height: 100vh;
     }
-    .container { width: min(1100px, 92%); margin: auto; }
-    header { padding: 68px 0 38px; text-align: center; }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 68px 0 38px;
+      text-align: center;
+    }
+
     .eyebrow {
-      display: inline-block; color: var(--accent2); border: 1px solid var(--border);
-      padding: 8px 14px; border-radius: 999px; font-size: .85rem; letter-spacing: .04em;
+      display: inline-block;
+      color: var(--accent2);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .85rem;
+      letter-spacing: .04em;
       background: rgba(88,223,193,.06);
     }
-    h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); margin: 20px 0 14px; line-height: 1.08; }
-    h1 span { color: var(--accent); }
-    .intro { max-width: 650px; margin: 0 auto; color: var(--muted); line-height: 1.7; font-size: 1.05rem; }
-    .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      margin: 20px 0 14px;
+      line-height: 1.08;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      text-decoration: none; border-radius: 10px; padding: 12px 18px; font-weight: 700;
-      border: 1px solid var(--border); color: var(--text); background: rgba(255,255,255,.04);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,.04);
     }
-    .btn.primary { background: var(--accent); color: #081126; border-color: transparent; }
-    .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 20px 0; }
-    h2 { font-size: 1.65rem; margin: 0; }
-    .count { color: var(--muted); font-size: .95rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 18px; padding-bottom: 65px; }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #081126;
+      border-color: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    h2 {
+      font-size: 1.65rem;
+      margin: 0;
+    }
+
+    .count {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 18px;
+      padding-bottom: 65px;
+    }
+
     .card {
-      background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
-      border: 1px solid var(--border); border-radius: 18px; padding: 23px;
-      min-height: 205px; display: flex; flex-direction: column; transition: .2s ease;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.02)
+      );
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 23px;
+      min-height: 205px;
+      display: flex;
+      flex-direction: column;
+      transition: .2s ease;
     }
-    .card:hover { transform: translateY(-5px); background: var(--panel-hover); border-color: rgba(124,156,255,.55); }
-    .number { color: var(--accent2); font-size: .82rem; font-weight: 800; letter-spacing: .08em; }
-    .card h3 { margin: 13px 0 8px; font-size: 1.2rem; }
-    .card p { color: var(--muted); line-height: 1.55; margin: 0 0 22px; font-size: .94rem; }
-    .card a { margin-top: auto; color: var(--accent); text-decoration: none; font-weight: 750; }
-    .card a:hover { color: var(--accent2); }
-    footer { border-top: 1px solid var(--border); text-align: center; padding: 25px 0 35px; color: var(--muted); font-size: .9rem; }
-    @media (max-width: 600px) { header { padding-top: 48px; } .section-head { align-items: start; flex-direction: column; } }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: var(--panel-hover);
+      border-color: rgba(124,156,255,.55);
+    }
+
+    .number {
+      color: var(--accent2);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .card h3 {
+      margin: 13px 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 22px;
+      font-size: .94rem;
+    }
+
+    .card a {
+      margin-top: auto;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .card a:hover {
+      color: var(--accent2);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 25px 0 35px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 48px;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
+
 <body>
+
   <header class="container">
     <span class="eyebrow">WEB DEVELOPMENT PORTFOLIO</span>
-    <h1>My Web Interface<br><span>Projects</span></h1>
-    <p class="intro">Hi, I'm Sahana. Welcome to my collection of 10 web development projects built while learning and exploring HTML, CSS, and JavaScript. Choose a project below to open it.</p>
+
+    <h1>
+      My Web Interface<br>
+      <span>Projects</span>
+    </h1>
+
+    <p class="intro">
+      Hi, I'm Sahana. Welcome to my collection of 10 web development
+      projects built while learning and exploring HTML, CSS, and JavaScript.
+      Choose a project below to open it.
+    </p>
+
     <div class="actions">
-      <a class="btn primary" href="#projects">Explore Projects ↓</a>
-      <a class="btn" href="https://github.com/sahanasuresh567/Web-Interface" target="_blank" rel="noopener noreferrer">View GitHub Repository ↗</a>
+      <a class="btn primary" href="#projects">
+        Explore Projects ↓
+      </a>
+
+      <a class="btn"
+         href="https://github.com/sahanasuresh567/Web-Interface"
+         target="_blank"
+         rel="noopener noreferrer">
+        View GitHub Repository ↗
+      </a>
     </div>
   </header>
 
   <main class="container" id="projects">
+
     <div class="section-head">
       <h2>All Projects</h2>
       <span class="count">10 projects · One website</span>
     </div>
+
     <section class="grid" aria-label="Project list">
+
+      <!-- PROJECT 01 -->
       <article class="card">
-        <span class="number">PROJECT 01</span><h3>Attendance Tracker</h3>
+        <span class="number">PROJECT 01</span>
+        <h3>Attendance Tracker</h3>
         <p>A web interface for tracking and viewing attendance records.</p>
-        <a href="./Attendance%20Tracker/attend/">Open project →</a>
+        <a href="./Attendance%20Tracker/attend/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 02 -->
       <article class="card">
-        <span class="number">PROJECT 02</span><h3>Calculator</h3>
+        <span class="number">PROJECT 02</span>
+        <h3>Calculator</h3>
         <p>A simple calculator interface for performing basic calculations.</p>
-        <a href="./Calculator/calculator/">Open project →</a>
+        <a href="./Calculator/calculator/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 03 -->
       <article class="card">
-        <span class="number">PROJECT 03</span><h3>College Dashboard</h3>
+        <span class="number">PROJECT 03</span>
+        <h3>College Dashboard</h3>
         <p>A dashboard-style interface for college information and features.</p>
-        <a href="./College%20dashboard/collegeDashboard/">Open project →</a>
+        <a href="./College%20dashboard/collageDashboard/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 04 -->
       <article class="card">
-        <span class="number">PROJECT 04</span><h3>Counter App</h3>
+        <span class="number">PROJECT 04</span>
+        <h3>Counter App</h3>
         <p>A small interactive app to increase, decrease, and reset a counter.</p>
-        <a href="./Counter%20App/">Open project →</a>
+        <a href="./Counter%20App/project1.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 05 -->
       <article class="card">
-        <span class="number">PROJECT 05</span><h3>Portfolio</h3>
+        <span class="number">PROJECT 05</span>
+        <h3>Portfolio</h3>
         <p>A personal portfolio webpage showcasing profile and work.</p>
-        <a href="./Portfolio/portfolio/">Open project →</a>
+        <a href="./Portfolio/portfolio/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 06 -->
       <article class="card">
-        <span class="number">PROJECT 06</span><h3>Report Card</h3>
+        <span class="number">PROJECT 06</span>
+        <h3>Report Card</h3>
         <p>A report-card interface for displaying student marks and details.</p>
-        <a href="./REPORT%20CARD/reportcard/">Open project →</a>
+        <a href="./REPORT%20CARD/reportcard/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 07 -->
       <article class="card">
-        <span class="number">PROJECT 07</span><h3>Student Profile Card</h3>
+        <span class="number">PROJECT 07</span>
+        <h3>Student Profile Card</h3>
         <p>A profile card layout presenting student information.</p>
-        <a href="./Student%20Profile%20Card/">Open project →</a>
+        <a href="./Student%20Profile%20Card/project2.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 08 -->
       <article class="card">
-        <span class="number">PROJECT 08</span><h3>Student Registration Form</h3>
+        <span class="number">PROJECT 08</span>
+        <h3>Student Registration Form</h3>
         <p>A form interface for collecting student registration details.</p>
-        <a href="./Student%20Registration%20form/form/">Open project →</a>
+        <a href="./Student%20Registration%20form/form/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 09 -->
       <article class="card">
-        <span class="number">PROJECT 09</span><h3>To-Do List</h3>
+        <span class="number">PROJECT 09</span>
+        <h3>To-Do List</h3>
         <p>A task list interface for organizing everyday activities.</p>
-        <a href="./To-Do-List/todolist/">Open project →</a>
+        <a href="./To-Do-List/todolist/index.html">
+          Open project →
+        </a>
       </article>
+
+      <!-- PROJECT 10 -->
       <article class="card">
-        <span class="number">PROJECT 10</span><h3>Hobby Card</h3>
+        <span class="number">PROJECT 10</span>
+        <h3>Hobby Card</h3>
         <p>A visual card showcasing hobbies and interests.</p>
-        <a href="./hoby%20card/hobycard/">Open project →</a>
+        <a href="./hobby%20card/hobbycard/index.html">
+          Open project →
+        </a>
       </article>
+
     </section>
   </main>
 
   <footer>
-    <div class="container">Designed and built by Sahana S · Web Interface Projects</div>
+    <div class="container">
+      Designed and built by Sahana S · Web Interface Projects
+    </div>
   </footer>
+
 </body>
 </html>
