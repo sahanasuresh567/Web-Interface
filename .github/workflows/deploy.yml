@@ -1,5 +1,4 @@
-
-name: Deploy GitHub Pages
+name: Deploy All 10 Projects
 
 on:
   push:
@@ -17,25 +16,180 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # -----------------------------
+      # Create deployment folder
+      # -----------------------------
+      - name: Create deployment folder
+        run: |
+          mkdir -p deploy
+
+      # -----------------------------
+      # Copy root website
+      # -----------------------------
+      - name: Copy main index
+        run: |
+          cp index.html deploy/index.html
+
+      # -----------------------------
+      # Project 1 - Attendance Tracker
+      # -----------------------------
+      - name: Build Attendance Tracker
+        working-directory: Attendance Tracker/attend
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/attendance/
+
+      - name: Copy Attendance Tracker
+        run: |
+          mkdir -p deploy/attendance
+          cp -r "Attendance Tracker/attend/dist/." deploy/attendance/
+
+      # -----------------------------
+      # Project 2 - Calculator
+      # -----------------------------
+      - name: Build Calculator
+        working-directory: Calculator/calculator
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/calculator/
+
+      - name: Copy Calculator
+        run: |
+          mkdir -p deploy/calculator
+          cp -r Calculator/calculator/dist/. deploy/calculator/
+
+      # -----------------------------
+      # Project 3 - College Dashboard
+      # -----------------------------
+      - name: Build College Dashboard
+        working-directory: College dashboard/collageDashboard
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/college-dashboard/
+
+      - name: Copy College Dashboard
+        run: |
+          mkdir -p deploy/college-dashboard
+          cp -r "College dashboard/collageDashboard/dist/." deploy/college-dashboard/
+
+      # -----------------------------
+      # Project 4 - Counter App
+      # -----------------------------
+      - name: Copy Counter App
+        run: |
+          mkdir -p deploy/counter
+          cp "Counter App/project1.html" deploy/counter/index.html
+
+      # -----------------------------
+      # Project 5 - Portfolio
+      # -----------------------------
+      - name: Build Portfolio
+        working-directory: Portfolio/portfolio
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/portfolio/
+
+      - name: Copy Portfolio
+        run: |
+          mkdir -p deploy/portfolio
+          cp -r Portfolio/portfolio/dist/. deploy/portfolio/
+
+      # -----------------------------
+      # Project 6 - Report Card
+      # -----------------------------
+      - name: Build Report Card
+        working-directory: REPORT CARD/reportcard
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/report-card/
+
+      - name: Copy Report Card
+        run: |
+          mkdir -p deploy/report-card
+          cp -r "REPORT CARD/reportcard/dist/." deploy/report-card/
+
+      # -----------------------------
+      # Project 7 - Student Profile Card
+      # -----------------------------
+      - name: Copy Student Profile Card
+        run: |
+          mkdir -p deploy/student-profile
+          cp "Student Profile Card/project2.html" deploy/student-profile/index.html
+
+      # -----------------------------
+      # Project 8 - Student Registration Form
+      # -----------------------------
+      - name: Build Student Registration Form
+        working-directory: Student Registration form/form
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/student-registration/
+
+      - name: Copy Student Registration Form
+        run: |
+          mkdir -p deploy/student-registration
+          cp -r "Student Registration form/form/dist/." deploy/student-registration/
+
+      # -----------------------------
+      # Project 9 - To-Do List
+      # -----------------------------
+      - name: Build To-Do List
+        working-directory: To-Do-List/todolist
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/todo-list/
+
+      - name: Copy To-Do List
+        run: |
+          mkdir -p deploy/todo-list
+          cp -r To-Do-List/todolist/dist/. deploy/todo-list/
+
+      # -----------------------------
+      # Project 10 - Hobby Card
+      # -----------------------------
+      - name: Build Hobby Card
+        working-directory: hobby card/hobbycard
+        run: |
+          npm ci
+          npm run build -- --base=/Web-Interface/hobby-card/
+
+      - name: Copy Hobby Card
+        run: |
+          mkdir -p deploy/hobby-card
+          cp -r "hobby card/hobbycard/dist/." deploy/hobby-card/
+
+      # -----------------------------
+      # GitHub Pages configuration
+      # -----------------------------
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload website files
+      - name: Upload deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ./deploy
 
-      - name: Deploy website
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
