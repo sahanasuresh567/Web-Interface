@@ -1,5 +1,5 @@
 import "./StudentCard.css";
-import studentImg from "./assets/photo.jpg";
+import studentImg from "./assets/photo.JPG";
 function StudentCard(props) {
   return (
     <div className="card">
