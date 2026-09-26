@@ -5,7 +5,7 @@ import garden from "./assets/garden.jpg";
 import music from "./assets/music.jpg";
 import photography from "./assets/photography.jpg";
 import drawing from "./assets/painting.jpg";
-import Reading from "./assets/reading.jpg";
+import Reading from "./assets/Reading.jpg";
 
 function App() {
  
