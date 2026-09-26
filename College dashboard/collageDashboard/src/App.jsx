@@ -3,7 +3,7 @@ import Header from "./Header";
 import StudentCard from "./StudentCard";
 import StudentList from "./StudentList";
 import Footer from "./Footer";
-import studentImg from "./assets/photo.jpg";
+import studentImg from "./assets/photo.JPG";
 
 function App() {
   const subjects = [
